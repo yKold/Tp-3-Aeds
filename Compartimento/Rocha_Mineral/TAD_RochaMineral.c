@@ -53,24 +53,28 @@ void InicializaRochaMineral(RochaMineral* Rocha, float PESO, ListaMineral LISTAM
     DefineDataHora(&(Rocha->_DataColeta));
 }
 
-void ClassificaCategoria(RochaMineral* Rocha){
-    int Ferrolita = 0, Solarium = 0, Aquavitae = 0, Terranita = 0, Calaris = 0;
+void ClassificaCategoria(RochaMineral* Rocha, int numerodeminerais){
+    int Ferrolita = 0;
+    int Solarium = 0; 
+    int Aquavitae = 0;
+    int Terranita = 0;
+    int Calaris = 0;
 
-    for (int i = 0; i < sizeof(Rocha->_ListaMineral._Mineral); i++)
-    {
-        if(strcmp(Rocha->_ListaMineral._Mineral[0].nome, "Ferrolita")){
+for (int i = 0; i < numerodeminerais; i++){
+
+        if(strcmp(Rocha->_ListaMineral._Mineral[i].nome, "Ferrolita")== 0 || strcmp(Rocha->_ListaMineral._Mineral[i].nome, "Ferrolita\n")== 0){
             Ferrolita = 1;
         }
-        if(strcmp(Rocha->_ListaMineral._Mineral[0].nome, "Solarium")){
+        if(strcmp(Rocha->_ListaMineral._Mineral[i].nome, "Solarium") == 0 || strcmp(Rocha->_ListaMineral._Mineral[i].nome, "Solarium\n") == 0){
             Solarium = 1;
         }
-        if(strcmp(Rocha->_ListaMineral._Mineral[0].nome, "Aquavitae")){
+        if(strcmp(Rocha->_ListaMineral._Mineral[i].nome, "Aquavitae") == 0 || strcmp(Rocha->_ListaMineral._Mineral[i].nome, "Aquavitae\n") == 0){
             Aquavitae = 1;
         }
-        if(strcmp(Rocha->_ListaMineral._Mineral[0].nome, "Terranita")){
+        if(strcmp(Rocha->_ListaMineral._Mineral[i].nome, "Terranita") == 0 || strcmp(Rocha->_ListaMineral._Mineral[i].nome, "Terranita\n") == 0){
             Terranita = 1;
         }
-        if(strcmp(Rocha->_ListaMineral._Mineral[0].nome, "Calaris")){
+        if(strcmp(Rocha->_ListaMineral._Mineral[i].nome, "Calaris") == 0 || strcmp(Rocha->_ListaMineral._Mineral[i].nome, "Calaris\n") == 0){
             Calaris = 1;
         }
     }
@@ -107,6 +111,7 @@ void ClassificaCategoria(RochaMineral* Rocha){
     }
 }
 
+// Imprime a Categoria da Rocha
 void TransformarCategoria(RochaMineral* Rocha){
     switch (Rocha->_Categorias)
     {
@@ -143,4 +148,4 @@ void TransformarCategoria(RochaMineral* Rocha){
     default:
         break;
     }
-}   
+}

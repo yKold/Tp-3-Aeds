@@ -1,4 +1,4 @@
-#include "Compartimento/TAD_Compartimento.h"
+#include "Insercao.h"
 
 void Insercao(GerenciadorCompartimento* gerenciadorCompatimento, int ultimoElemento, int* comparacoes, int* movimentacoes) {
     int i, j;

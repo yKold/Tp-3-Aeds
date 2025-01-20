@@ -1,6 +1,6 @@
 #include "ArquivoDeEntrada.c"
 #include "Compartimento/TAD_Compartimento.h"
-#include "Insercao.c"
+#include "Insercao.h"
 #include "QuickSort.c"
 #include "string.h"
 #include <time.h>
@@ -12,16 +12,33 @@ int main(){
     GerenciadorCompartimento* gerenciadorCompartimento;
     gerenciadorCompartimento = malloc(sizeof(GerenciadorCompartimento));
 
-    int valorDeEntrada = 3;
+    int valorDeEntrada;
+    int QuantidadeRochas;
 
     int *comparacoes = malloc(sizeof(int));
     int *movimentacoes = malloc(sizeof(int)); 
     char algoritmo[15];
+    printf("Deseja realizar o teste com quantas rochas?\nDigite 1 para 250 Rochas\nDigite 2 para 1000 Rochas\nDigite 3 para 10000 Rochas\n");
+    scanf("%d", &QuantidadeRochas);
+    switch (QuantidadeRochas)
+    {
+    case 1:
+        LerArquivo("Arquivos/250Rochas.txt", gerenciadorCompartimento);
+        break;
+    case 2:
+        LerArquivo("Arquivos/1000Rochas.txt", gerenciadorCompartimento);
+        break;
+    case 3:
+        LerArquivo("Arquivos/10000Rochas.txt", gerenciadorCompartimento);
+        break;
+    default:
+        break;
+    }
     
-    printf("Qual método de ordenação você deseja usar?\nDigite 1 para Inserção.\nDigite 2 para QuickSort.\n");
+    printf("Qual metodo de ordenacao voce deseja usar?\nDigite 1 para Insercao.\nDigite 2 para QuickSort.\n");
     scanf("%d", &valorDeEntrada);
     
-    LerArquivo("Entradas.txt", gerenciadorCompartimento);
+    
     switch (valorDeEntrada)
     {
     case 1:
@@ -29,7 +46,7 @@ int main(){
         Insercao(gerenciadorCompartimento, gerenciadorCompartimento->ultimo, comparacoes, movimentacoes);
         fim = clock();
         ImprimeRochasDoCompatimento(gerenciadorCompartimento);
-        strcpy(algoritmo, "Inserção");
+        strcpy(algoritmo, "Insercao");
         break;
     case 2:
         inicio = clock();
@@ -39,11 +56,11 @@ int main(){
         strcpy(algoritmo, "QuickSort");
         break;
     default:
-        printf("Este valor não é valido, digite outro");
+        printf("Este valor nao e valido, digite outro");
         break;
     }
     tempoDeExecucao = (double)(fim - inicio);
-    printf("Comparações: %d \nMovimentações: %d \nTempo de execução: %.1f\nAlgoritmo: %s\n", *comparacoes, *movimentacoes, tempoDeExecucao, algoritmo);
+    printf("Comparacoes: %d \nMovimentacoes: %d \nTempo de execucao: %.3f\nAlgoritmo: %s\n", *comparacoes, *movimentacoes, tempoDeExecucao, algoritmo);
     printf("\n");
 
     return 0;

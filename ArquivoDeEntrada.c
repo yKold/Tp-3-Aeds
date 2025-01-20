@@ -42,19 +42,23 @@ void LerArquivo(char* link, GerenciadorCompartimento* gerenciadorCompartimento){
 
         InicializaListaMineral(&listaMineral);
 
+        int tamanho = 1;
+
         InicializaMineral(&mineral, nome1);
         InsereListaMineral(&listaMineral, mineral);
         if(nome2 != NULL){
             InicializaMineral(&mineral, nome2);
             InsereListaMineral(&listaMineral, mineral);
+            tamanho = 2;
         }
         if(nome3 != NULL){
             InicializaMineral(&mineral, nome3);
             InsereListaMineral(&listaMineral, mineral);
+            tamanho = 3;
         }
         
         InicializaRochaMineral(&rochaMineral, peso, listaMineral, localizacao);
-        ClassificaCategoria(&rochaMineral);
+        ClassificaCategoria(&rochaMineral, tamanho);
         
         Compartimento compatimento;
         compatimento._RochaMineral = rochaMineral;
