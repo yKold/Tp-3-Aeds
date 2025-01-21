@@ -17,8 +17,6 @@ void LerArquivo(char* link, GerenciadorCompartimento* gerenciadorCompartimento){
 
     fscanf(arquivoDeEntrada, "%d", &numeroDeRochas);
 
-    printf("%d\n", numeroDeRochas);
-
     Mineral mineral;
     ListaMineral listaMineral;
     RochaMineral rochaMineral;

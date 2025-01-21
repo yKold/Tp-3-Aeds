@@ -39,8 +39,8 @@ int RetiraRochaDoCompatimento(GerenciadorCompartimento* gerenciadorCompartimento
 void ImprimeRochasDoCompatimento(GerenciadorCompartimento* gerenciadorCompartimento){
     for (int i = gerenciadorCompartimento->primeiro; i < gerenciadorCompartimento->ultimo; i++)
     {
-        printf("%.1f ", gerenciadorCompartimento->compartimentos[i]._RochaMineral.Peso);
         TransformarCategoria(&gerenciadorCompartimento->compartimentos[i]._RochaMineral);
+        printf(" %.1f", gerenciadorCompartimento->compartimentos[i]._RochaMineral.Peso);
         printf("\n");
     }
     printf("\n");   

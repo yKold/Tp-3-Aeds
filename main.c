@@ -60,7 +60,7 @@ int main(){
         break;
     }
     tempoDeExecucao = (double)(fim - inicio);
-    printf("Comparacoes: %d \nMovimentacoes: %d \nTempo de execucao: %.3f\nAlgoritmo: %s\n", *comparacoes, *movimentacoes, tempoDeExecucao, algoritmo);
+    printf("Comparacoes: %d \nMovimentacoes: %d \nTempo de execucao: %.4fs\nAlgoritmo: %s\n", *comparacoes, *movimentacoes, tempoDeExecucao, algoritmo);
     printf("\n");
 
     return 0;
