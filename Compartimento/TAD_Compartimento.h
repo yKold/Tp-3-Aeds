@@ -2,7 +2,7 @@
 #define TAD_COMPARTIMENTO
 #include "Rocha_Mineral/TAD_RochaMineral.h"
 #define InicioDoCompatimento 0
-#define TamanhoMaximo 1000
+#define TamanhoMaximo 10000
 
 typedef struct PreCelulaMineral{
     RochaMineral _RochaMineral;

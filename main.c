@@ -15,8 +15,8 @@ int main(){
     int valorDeEntrada;
     int QuantidadeRochas;
 
-    int *comparacoes = malloc(sizeof(int));
-    int *movimentacoes = malloc(sizeof(int)); 
+    int comparacoes = 0;
+    int movimentacoes = 0; 
     char algoritmo[15];
     printf("Deseja realizar o teste com quantas rochas?\nDigite 1 para 250 Rochas\nDigite 2 para 1000 Rochas\nDigite 3 para 10000 Rochas\n");
     scanf("%d", &QuantidadeRochas);
@@ -43,14 +43,14 @@ int main(){
     {
     case 1:
         inicio = clock();
-        Insercao(gerenciadorCompartimento, gerenciadorCompartimento->ultimo, comparacoes, movimentacoes);
+        Insercao(gerenciadorCompartimento, gerenciadorCompartimento->ultimo, &comparacoes, &movimentacoes);
         fim = clock();
         ImprimeRochasDoCompatimento(gerenciadorCompartimento);
         strcpy(algoritmo, "Insercao");
         break;
     case 2:
         inicio = clock();
-        QuickSort(gerenciadorCompartimento, gerenciadorCompartimento->ultimo, comparacoes, movimentacoes);
+        QuickSort(gerenciadorCompartimento, gerenciadorCompartimento->ultimo, &comparacoes, &movimentacoes);
         fim = clock();
         ImprimeRochasDoCompatimento(gerenciadorCompartimento);
         strcpy(algoritmo, "QuickSort");
@@ -59,8 +59,8 @@ int main(){
         printf("Este valor nao e valido, digite outro");
         break;
     }
-    tempoDeExecucao = (double)(fim - inicio);
-    printf("Comparacoes: %d \nMovimentacoes: %d \nTempo de execucao: %.4fs\nAlgoritmo: %s\n", *comparacoes, *movimentacoes, tempoDeExecucao, algoritmo);
+    tempoDeExecucao = (double)(fim - inicio) / CLOCKS_PER_SEC;
+    printf("Comparacoes: %d \nMovimentacoes: %d \nTempo de execucao: %.6fs\nAlgoritmo: %s\n", comparacoes, movimentacoes, tempoDeExecucao, algoritmo);
     printf("\n");
 
     return 0;

@@ -11,19 +11,17 @@ void Particao(int Esq, int Dir, int* i, int* j, GerenciadorCompartimento* gerenc
             (*comparacoes)++;
             (*i)++;
         }
-        (*comparacoes)++;
 
         while (pivo._RochaMineral.Peso < gerenciadorCompartimento->compartimentos[*j]._RochaMineral.Peso) {
             (*comparacoes)++;
             (*j)--;
         }
-        (*comparacoes)++;
 
         if (*i <= *j) {
             aux = gerenciadorCompartimento->compartimentos[*i];
             gerenciadorCompartimento->compartimentos[*i] = gerenciadorCompartimento->compartimentos[*j];
             gerenciadorCompartimento->compartimentos[*j] = aux;
-            (*movimentacoes) += 3;
+            (*movimentacoes) ++;
             (*i)++;
             (*j)--;
         }
@@ -34,11 +32,11 @@ void Ordena(int Esq, int Dir, GerenciadorCompartimento* gerenciadorCompartimento
     int i, j;
     Particao(Esq, Dir, &i, &j, gerenciadorCompartimento, comparacoes, movimentacoes);
     if (Esq < j) Ordena(Esq, j, gerenciadorCompartimento, comparacoes, movimentacoes);
+    (*comparacoes)++;
     if (i < Dir) Ordena(i, Dir, gerenciadorCompartimento, comparacoes, movimentacoes);
+    (*comparacoes)++;
 }
 
 void QuickSort(GerenciadorCompartimento* gerenciadorCompartimento, int ultimo, int* comparacoes, int* movimentacoes) {
-    *comparacoes = 0;
-    *movimentacoes = 0;
     Ordena(0, ultimo - 1, gerenciadorCompartimento, comparacoes, movimentacoes);
 }

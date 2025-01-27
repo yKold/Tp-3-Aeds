@@ -9,14 +9,13 @@ void Insercao(GerenciadorCompartimento* gerenciadorCompatimento, int ultimoEleme
         j = i - 1;
 
         while ((j >= 0) && (aux._RochaMineral.Peso < gerenciadorCompatimento->compartimentos[j]._RochaMineral.Peso)) {
-            (*comparacoes)++;
-            gerenciadorCompatimento->compartimentos[j + 1] = gerenciadorCompatimento->compartimentos[j];
+            (*comparacoes)+= 2;
             (*movimentacoes)++;
+            gerenciadorCompatimento->compartimentos[j + 1] = gerenciadorCompatimento->compartimentos[j];
             j--;
         }
-        (*comparacoes)++;
-
-        gerenciadorCompatimento->compartimentos[j + 1] = aux;
         (*movimentacoes)++;
+        gerenciadorCompatimento->compartimentos[j + 1] = aux;
+        
     }
 }
